@@ -1,21 +1,17 @@
-import { isIphoneWithNotch }                 from "../helpers/_functions/device.js";
-import { shadeBlendConvert }                 from "../helpers/_functions/shadeblendconvert.js";
-import { background, button, font, spacing } from "../variables.js";
+import { isIphoneWithNotch } from "../helpers/_functions/device";
+import { background, button, contrast, font, spacing } from "../variables";
+/*
 
+DISCLAIMER:
+Do not change this file because it is core styling.
+Customizing core files will make updating Atlas much more difficult in the future.
+To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
 
-//
-// DISCLAIMER:
-// Do not change this file because it is core styling.
-// Customizing core files will make updating Atlas much more difficult in the future.
-// To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
-//
-
-/* ==========================================================================
+==========================================================================
     Intro Screen
 
     Default Class For Mendix Intro Screen Widget
 ========================================================================== */
-
 // Button styles when the chose to show the indicator above the buttons
 export const introScreenButtonPaginationAbove = {
     container: {
@@ -65,7 +61,6 @@ export const introScreenButtonPaginationBetween = {
         paddingHorizontal: spacing.smallest,
     },
 };
-
 // Default styles
 export const com_mendix_widget_native_introscreen_IntroScreen = {
     fullscreenContainer: {
@@ -78,7 +73,6 @@ export const com_mendix_widget_native_introscreen_IntroScreen = {
         paddingHorizontal: 50,
         backgroundColor: `rgba(0, 0, 0, 0.5)`,
     },
-
     // Pagination styles
     paginationContainer: {
         // All ViewStyle properties are allowed
@@ -97,14 +91,13 @@ export const com_mendix_widget_native_introscreen_IntroScreen = {
     },
     dotStyle: {
         // All ViewStyle properties are allowed
-        backgroundColor: shadeBlendConvert(0.5, background.brandPrimary),
+        backgroundColor: contrast.lower,
         transform: [{ scale: 0.5 }],
     },
     activeDotStyle: {
         // All ViewStyle properties are allowed
         backgroundColor: background.brandPrimary,
     },
-
     // Button styles
     paginationAbove: {
         buttonsContainer: {
@@ -113,6 +106,7 @@ export const com_mendix_widget_native_introscreen_IntroScreen = {
             marginTop: 30,
             flexDirection: "row",
             justifyContent: "center",
+            width: "100%",
         },
         buttonSkip: introScreenButtonPaginationAbove,
         buttonPrevious: introScreenButtonPaginationAbove,

@@ -1,20 +1,17 @@
 /**
  * This file was generated from NativePinInput.xml
  * WARNING: All changes made to this file will be overwritten
- * @author Mendix Widgets Team
+ * @author Mendix UI Content Team
  */
 import { ActionValue, DynamicValue, EditableValue, NativeIcon } from "mendix";
-
-interface CommonProps<Style> {
-    name: string;
-    style: Style[];
-}
 
 export type DarkModeEnum = "device" | "dark" | "light";
 
 export type ButtonStyleEnum = "circle" | "numKeyboard";
 
-export interface NativePinInputProps<Style> extends CommonProps<Style> {
+export interface NativePinInputProps<Style> {
+    name: string;
+    style: Style[];
     dataAttr: EditableValue<string>;
     maxLength: number;
     deleteButtonIcon: DynamicValue<NativeIcon>;
@@ -22,4 +19,16 @@ export interface NativePinInputProps<Style> extends CommonProps<Style> {
     buttonStyle: ButtonStyleEnum;
     onChangeAction?: ActionValue;
     onInputCompleteAction?: ActionValue;
+}
+
+export interface NativePinInputPreviewProps {
+    class: string;
+    style: string;
+    dataAttr: string;
+    maxLength: number | null;
+    deleteButtonIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; } | null;
+    darkMode: DarkModeEnum;
+    buttonStyle: ButtonStyleEnum;
+    onChangeAction: {} | null;
+    onInputCompleteAction: {} | null;
 }

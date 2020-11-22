@@ -1,18 +1,16 @@
-import { Platform }                              from "react-native";
-import { shadeBlendConvert }                     from "../../../core/helpers/_functions/shadeblendconvert.js";
+import { Platform } from "react-native";
 import { background, border, contrast, spacing } from "../../../core/variables";
-
-/* ==========================================================================
+/*
+==========================================================================
     Cards
 
-========================================================================== */
-
+==========================================================================
+*/
 export const card = {
     container: {
         borderRadius: border.radius,
         backgroundColor: background.primary,
         marginBottom: spacing.regular,
-
         ...Platform.select({
             android: {
                 borderWidth: 1,
@@ -20,8 +18,8 @@ export const card = {
             },
         }),
         elevation: 1.5,
-        shadowColor: shadeBlendConvert(-0.2, background.primary),
-        shadowOpacity: 0.7,
+        shadowColor: "#000",
+        shadowOpacity: 0.1,
         shadowRadius: 10,
         shadowOffset: {
             width: 0,
@@ -29,10 +27,9 @@ export const card = {
         },
     },
 };
-
+//
 //== Elements
 //-------------------------------------------------------------------------------------------------------------------//
-
 export const cardImage = {
     container: {
         overflow: "hidden",
@@ -57,7 +54,6 @@ export const cardImageFull = {
         resizeMode: "cover",
     },
 };
-
 export const cardBody = {
     container: {
         position: "absolute",
@@ -67,7 +63,7 @@ export const cardBody = {
         backgroundColor: "transparent",
     },
 };
-
+//
 //== Variations
 //-------------------------------------------------------------------------------------------------------------------//
 // Card Action
@@ -82,14 +78,13 @@ export const cardAction = {
         alignItems: "center",
     },
 };
-
 export const cardActionImage = {
     image: {
         maxHeight: 70,
         resizeMode: "contain",
     },
 };
-
+//
 //-------------------------------------------------------------------------------------------------------------------//
 // Card Payment
 export const cardPaymentImage = {

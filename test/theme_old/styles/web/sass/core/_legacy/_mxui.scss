@@ -2684,7 +2684,6 @@ input[type="checkbox"] {
 //.mx-scrollcontainer-wrapper {
 //    padding: 10px;
 //}
-
 .mx-scrollcontainer-nested {
     padding: 0;
 }
@@ -2708,11 +2707,11 @@ input[type="checkbox"] {
 .mx-scrollcontainer-toggleable {
     background-color: #fff;
 }
-.mx-scrollcontainer-slide > .mx-scrollcontainer-toggleable > .mx-scrollcontainer-wrapper {
-    position: relative;
-    z-index: 1;
-    background-color: inherit;
-}
+//.mx-scrollcontainer-slide > .mx-scrollcontainer-toggleable > .mx-scrollcontainer-wrapper {
+//    position: relative;
+//    z-index: 1;
+//    background-color: inherit;
+//}
 .mx-scrollcontainer-push {
     position: relative;
 }

@@ -24,12 +24,12 @@ export const commonStyles = StyleSheet.create({
         justifyContent: "center"
     },
     pinInputTouchable: {
-        justifyContent: "center",
+        justifyContent: "center"
     },
     deleteButtonTouchable: {
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "transparent",
+        backgroundColor: "transparent"
     },
     emptyContainer: {
         backgroundColor: "transparent"
@@ -44,24 +44,18 @@ export const commonStyles = StyleSheet.create({
 });
 
 export const darkStyles = StyleSheet.create({
-    container: {
-    },
-    valueRow: {
-    },
+    container: {},
+    valueRow: {},
     readonlyText: {
         color: "#FFFFFF"
     },
-    validationMessage: {
-    },
-    buttonRow: {
-    },
+    validationMessage: {},
+    buttonRow: {},
     pinInputTouchable: {
         backgroundColor: "#1c1c1c"
     },
-    deleteButtonTouchable: {
-    },
-    emptyContainer: {
-    },
+    deleteButtonTouchable: {},
+    emptyContainer: {},
     icon: {
         color: "#FFFFFF"
     },
@@ -71,24 +65,18 @@ export const darkStyles = StyleSheet.create({
 });
 
 export const lightStyles = StyleSheet.create({
-    container: {
-    },
-    valueRow: {
-    },
+    container: {},
+    valueRow: {},
     readonlyText: {
         color: "#000000"
     },
-    validationMessage: {
-    },
-    buttonRow: {
-    },
+    validationMessage: {},
+    buttonRow: {},
     pinInputTouchable: {
         backgroundColor: "#f8f8f8"
     },
-    deleteButtonTouchable: {
-    },
-    emptyContainer: {
-    },
+    deleteButtonTouchable: {},
+    emptyContainer: {},
     icon: {
         color: "#000000"
     },
@@ -98,14 +86,10 @@ export const lightStyles = StyleSheet.create({
 });
 
 export const circleStyles = StyleSheet.create({
-    container: {
-    },
-    valueRow: {
-    },
-    readonlyText: {
-    },
-    validationMessage: {
-    },
+    container: {},
+    valueRow: {},
+    readonlyText: {},
+    validationMessage: {},
     buttonRow: {
         paddingBottom: 20,
         paddingRight: 30
@@ -120,27 +104,21 @@ export const circleStyles = StyleSheet.create({
     deleteButtonTouchable: {
         marginLeft: 30,
         height: 70,
-        width: 70,
+        width: 70
     },
     emptyContainer: {
         height: 70,
-        width: 100,
+        width: 100
     },
-    icon: {
-    },
-    caption: {
-    }
+    icon: {},
+    caption: {}
 });
 
 export const numKeyboardStyles = StyleSheet.create({
-    container: {
-    },
-    valueRow: {
-    },
-    readonlyText: {
-    },
-    validationMessage: {
-    },
+    container: {},
+    valueRow: {},
+    readonlyText: {},
+    validationMessage: {},
     buttonRow: {
         paddingBottom: 10
     },
@@ -159,8 +137,6 @@ export const numKeyboardStyles = StyleSheet.create({
         height: 50,
         width: 95
     },
-    icon: {
-    },
-    caption: {
-    }
+    icon: {},
+    caption: {}
 });

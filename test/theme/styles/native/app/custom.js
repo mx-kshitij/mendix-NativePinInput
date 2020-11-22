@@ -1,5 +1,3 @@
-import {} from "../core/variables";
-
 export const darkContainer = {
     container: {
         backgroundColor: "#000000"
