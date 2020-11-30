@@ -23,7 +23,7 @@ export const commonStyles = StyleSheet.create({
         paddingHorizontal: 0,
         justifyContent: "center"
     },
-    pinInputTouchable: {
+    pinInputView: {
         justifyContent: "center"
     },
     deleteButtonTouchable: {
@@ -51,7 +51,7 @@ export const darkStyles = StyleSheet.create({
     },
     validationMessage: {},
     buttonRow: {},
-    pinInputTouchable: {
+    pinInputView: {
         backgroundColor: "#1c1c1c"
     },
     deleteButtonTouchable: {},
@@ -72,7 +72,7 @@ export const lightStyles = StyleSheet.create({
     },
     validationMessage: {},
     buttonRow: {},
-    pinInputTouchable: {
+    pinInputView: {
         backgroundColor: "#f8f8f8"
     },
     deleteButtonTouchable: {},
@@ -94,7 +94,7 @@ export const circleStyles = StyleSheet.create({
         paddingBottom: 20,
         paddingRight: 30
     },
-    pinInputTouchable: {
+    pinInputView: {
         marginLeft: 30,
         alignItems: "center",
         height: 70,
@@ -122,7 +122,7 @@ export const numKeyboardStyles = StyleSheet.create({
     buttonRow: {
         paddingBottom: 10
     },
-    pinInputTouchable: {
+    pinInputView: {
         marginLeft: 10,
         borderRadius: 5,
         height: 50,

@@ -12,7 +12,7 @@ export interface CustomStyle extends Style {
     readonlyText: TextStyle;
     buttonRow: ViewStyle;
     valueRow: ViewStyle;
-    pinInputTouchable: ViewStyle;
+    pinInputView: ViewStyle;
     deleteButtonTouchable: ViewStyle;
     emptyContainer: ViewStyle;
     icon: TextStyle;
@@ -25,7 +25,7 @@ const defaultStyle: CustomStyle = {
     readonlyText: commonStyles.readonlyText,
     buttonRow: commonStyles.buttonRow,
     valueRow: commonStyles.valueRow,
-    pinInputTouchable: commonStyles.pinInputTouchable,
+    pinInputView: commonStyles.pinInputView,
     deleteButtonTouchable: commonStyles.deleteButtonTouchable,
     icon: commonStyles.icon,
     emptyContainer: commonStyles.emptyContainer,
@@ -38,9 +38,14 @@ interface State {
     displayValue: string;
 }
 
+// Mendix 9 is different!
+// Safely check if Appearance API is available in this version of React Native
+const Appearance = require("react-native").Appearance;
 const deviceDarkMode =
     NativeModules && NativeModules.RNDarkMode && NativeModules.RNDarkMode.initialMode
         ? NativeModules.RNDarkMode.initialMode === "dark"
+        : Appearance
+        ? Appearance.getColorScheme() === "dark"
         : false;
 
 export class NativePinInput extends Component<NativePinInputProps<CustomStyle>, State> {

@@ -24,9 +24,15 @@ export const brand = {
 };
 //
 // Dark Mode - Inherits OS theme if possible
-export const darkMode = NativeModules && NativeModules.RNDarkMode && NativeModules.RNDarkMode.initialMode
-    ? NativeModules.RNDarkMode.initialMode === "dark"
-    : false;
+// Safely check if Appearance API is available in this version of React Native
+const Appearance = require("react-native").Appearance;
+export const darkMode =
+    NativeModules && NativeModules.RNDarkMode && NativeModules.RNDarkMode.initialMode
+        ? NativeModules.RNDarkMode.initialMode === "dark"
+        : Appearance
+        ? Appearance.getColorScheme() === "dark"
+        : false;
+
 //
 // Background Colors
 const backgroundColor = darkMode ? "#000" : "#FFF";
