@@ -14,6 +14,7 @@ function RgbToHex(r, g, b) {
         const color = r.replace(/rgb[(]|[)]/gm, "");
         [r, g, b] = color.split(",");
     }
+    // eslint-disable-next-line no-bitwise
     return "#" + ((1 << 24) + (Number(r) << 16) + (Number(g) << 8) + Number(b)).toString(16).slice(1);
 }
 /**
@@ -31,7 +32,7 @@ function hexToRgb(hex) {
         r: parseInt("0x" + hex[0] + hex[1], 16),
         g: parseInt("0x" + hex[2] + hex[3], 16),
         b: parseInt("0x" + hex[4] + hex[5], 16),
-        a: parseInt("0x" + hex[6] + hex[7], 16) / 255 || 1,
+        a: parseInt("0x" + hex[6] + hex[7], 16) / 255 || 1
     });
 }
 /**
@@ -55,19 +56,34 @@ export function anyColorToRgbString(anyColor) {
  * @return  {object} Returns RGB color; {r,g,b}
  */
 function hslToRgb(hsl) {
-    let hslArray = hsl.replace(/hsla?[(]|[%]|[)]/gm, "").split(",").map(x => x.trim());
-    let h = hslArray[0], s = Number(hslArray[1]) / 100, l = Number(hslArray[2]) / 100, a = 1;
+    const hslArray = hsl
+        .replace(/hsla?[(]|[%]|[)]/gm, "")
+        .split(",")
+        .map(x => x.trim());
+    let h = hslArray[0];
+    const s = Number(hslArray[1]) / 100;
+    const l = Number(hslArray[2]) / 100;
+    const a = 1;
     // Strip label and convert to degrees (if necessary)
-    if (~h.indexOf("deg"))
+    // eslint-disable-next-line no-bitwise
+    if (~h.indexOf("deg")) {
         h = h.substr(0, h.length - 3);
-    else if (~h.indexOf("rad"))
+        // eslint-disable-next-line no-bitwise
+    }
+    else if (~h.indexOf("rad")) {
         h = Math.round(Number(h.substr(0, h.length - 3)) * (180 / Math.PI));
-    else if (~h.indexOf("turn"))
+        // eslint-disable-next-line no-bitwise
+    }
+    else if (~h.indexOf("turn")) {
         h = Math.round(Number(h.substr(0, h.length - 4)) * 360);
+    }
     h = Number(h);
-    if (h >= 360)
-        h %= 360; // Keep hue fraction of 360 if h is higher than 360
-    let r = 255, g = 255, b = 255;
+    if (h >= 360) {
+        h %= 360;
+    } // Keep hue fraction of 360 if h is higher than 360
+    let r = 255;
+    let g = 255;
+    let b = 255;
     const c = (1 - Math.abs(2 * l - 1)) * s; // chroma -> color intensity
     const x = c * (1 - Math.abs(((h / 60) % 2) - 1)); // Second largest component (first being chroma)
     const m = l - c / 2; // Amount to add to each channel to match lightness
@@ -105,7 +121,7 @@ function hslToRgb(hsl) {
         r: Math.round((r + m) * 255),
         g: Math.round((g + m) * 255),
         b: Math.round((b + m) * 255),
-        a,
+        a
     });
 }
 /**
@@ -119,11 +135,14 @@ function hslToRgb(hsl) {
 function rgbStringToRgb(rgb) {
     const color = rgb.replace(/rgb[(]|[)]/gm, "");
     // if RGB has hex color definition
-    if (~rgb.indexOf("#"))
+    // eslint-disable-next-line no-bitwise
+    if (~rgb.indexOf("#")) {
         return hexToRgb(color);
+    }
     // if RGB has word color definition
-    else if (!(/\d/).test(rgb))
+    else if (!/\d/.test(rgb)) {
         return colors[color.toLowerCase()];
+    }
     // if RGB has RGB color definition
     else {
         const [r, g, b] = color.split(",");
@@ -149,11 +168,13 @@ function rgbaToRgb(rgba) {
         const color = val.slice(0, val.lastIndexOf(",")).trim();
         const alpha = Number(val.slice(val.lastIndexOf(",") + 1).trim());
         // if RGBA has HEX color definition
-        if (color[0] === "#")
+        if (color[0] === "#") {
             RGB = hexToRgb(color);
+        }
         // if RGBA has word color definition
-        else if (!(/\d/).test(color))
+        else if (!/\d/.test(color)) {
             RGB = colors[color.toLowerCase()];
+        }
         // if RGBA has RGB color definition
         else {
             const [r, g, b] = color.split(",");
@@ -174,16 +195,24 @@ function rgbaToRgb(rgba) {
  * @return  {object} Returns RGB color; {r,g,b}
  */
 function checkColor(color) {
-    if (color in colors)
+    if (color in colors) {
         return colors[color.toLowerCase()];
-    else if (color[0] === "#")
+    }
+    else if (color[0] === "#") {
         return hexToRgb(color);
-    else if (~color.indexOf("hsl"))
+        // eslint-disable-next-line no-bitwise
+    }
+    else if (~color.indexOf("hsl")) {
         return hslToRgb(color);
-    else if (~color.indexOf("rgba"))
+        // eslint-disable-next-line no-bitwise
+    }
+    else if (~color.indexOf("rgba")) {
         return rgbaToRgb(color);
-    else if (~color.indexOf("rgb"))
+        // eslint-disable-next-line no-bitwise
+    }
+    else if (~color.indexOf("rgb")) {
         return rgbStringToRgb(color);
+    }
     return { r: 255, g: 255, b: 255 };
 }
 /**
@@ -214,10 +243,12 @@ export function setColorBasedOnBackground(color) {
  * @return  {string} Returns HEX color
  */
 export function setContrastScale(contrast, color) {
-    if (contrast > 1)
+    if (contrast > 1) {
         contrast = 1;
-    if (contrast < 0)
+    }
+    if (contrast < 0) {
         contrast = 0;
+    }
     const max = 256;
     const c = checkColor(color);
     const { r, g, b } = typeof c === "object" ? c : { r: 255, g: 255, b: 255 };

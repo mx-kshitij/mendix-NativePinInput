@@ -92,7 +92,6 @@ export async function TakePicture(picture, pictureSource, pictureQuality, maximu
             });
         });
     }
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     function getPictureMethod() {
         const source = pictureSource ? pictureSource : "either";
         switch (source) {
@@ -105,12 +104,10 @@ export async function TakePicture(picture, pictureSource, pictureQuality, maximu
                 return ImagePicker.showImagePicker;
         }
     }
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     function getOptions() {
         const { maxWidth, maxHeight } = getPictureQuality();
         const [language] = getLocales().map(local => local.languageCode);
         const isDutch = language === "nl";
-
         return {
             mediaType: "photo",
             maxWidth,

@@ -20,81 +20,89 @@ export const TextBox = {
     },
     label: {
         // numberOfLines and all TextStyle properties are allowed
-        numberOfLines: 1,
-        color: input.labelColor,
-        fontSize: input.fontSize,
+        numberOfLines: input.label.numberOfLines,
+        color: input.label.color,
+        fontSize: input.label.fontSize,
         fontFamily: font.family,
-        textAlign: input.textAlign,
-        marginRight: spacing.small,
+        textAlign: input.label.textAlign,
+        marginRight: spacing.small
     },
     labelDisabled: {
         // TextStyle properties are allowed
-        color: input.labelColorDisabled,
+        color: input.labelDisabled.color
     },
     input: {
         // autoCapitalize, placeholderTextColor, selectionColor, underlineColorAndroid and all TextStyle properties are allowed
-        color: input.color,
-        borderColor: input.borderColor,
-        backgroundColor: input.backgroundColor,
-        selectionColor: input.selectionColor,
-        placeholderTextColor: input.placeholderTextColor,
-        fontSize: input.fontSize,
-        fontFamily: input.fontFamily,
-        borderWidth: input.borderWidth,
-        borderRadius: input.borderRadius,
-        paddingHorizontal: input.paddingHorizontal,
-        paddingVertical: input.paddingVertical,
+        color: input.input.color,
+        borderColor: input.input.borderColor,
+        backgroundColor: input.input.backgroundColor,
+        selectionColor: input.input.selectionColor,
+        placeholderTextColor: input.input.placeholderTextColor,
+        fontSize: input.input.fontSize,
+        fontFamily: font.family,
+        borderWidth: input.input.borderWidth,
+        borderRadius: input.input.borderRadius,
+        // textAlignVertical: "center",
+        minWidth: input.input.minWidth,
+        minHeight: input.input.minHeight,
+        paddingHorizontal: input.input.paddingHorizontal,
+        paddingVertical: input.input.paddingVertical
     },
     inputDisabled: {
         // autoCapitalize, placeholderTextColor, selectionColor, underlineColorAndroid and all TextStyle properties are allowed
-        backgroundColor: input.backgroundColorDisabled,
-        color: input.colorDisabled,
+        color: input.inputDisabled.color,
+        borderColor: input.inputDisabled.borderColor,
+        backgroundColor: input.inputDisabled.backgroundColor
+    },
+    inputFocused: {
+    // autoCapitalize, placeholderTextColor, selectionColor, underlineColorAndroid and all TextStyle properties are allowed
     },
     inputError: {
         // autoCapitalize, placeholderTextColor, selectionColor, underlineColorAndroid and all TextStyle properties are allowed
-        color: input.errorColor,
-        borderColor: input.errorColor,
-        placeholderTextColor: input.errorColor,
-        underlineColorAndroid: input.underlineColorAndroid,
-    },
-    inputFocused: {
-        // autoCapitalize, placeholderTextColor, selectionColor, underlineColorAndroid and all TextStyle properties are allowed
-        borderColor: input.borderColorFocused
+        color: input.inputError.color,
+        borderColor: input.inputError.borderColor,
+        placeholderTextColor: input.inputError.placeholderTextColor,
+        underlineColorAndroid: "transparent"
     },
     validationMessage: {
         // All TextStyle properties are allowed
-        color: input.errorColor,
-        fontSize: font.size,
-        fontFamily: font.family,
-    },
+        color: input.validationMessage.color,
+        fontSize: input.validationMessage.fontSize,
+        fontFamily: font.family
+    }
 };
 export const TextBoxVertical = {
     container: {},
-    containerDisabled: TextBox.containerDisabled,
+    containerDisabled: {},
     label: {
-        numberOfLines: 1,
-        color: input.labelColor,
-        fontSize: input.fontSize,
+        numberOfLines: input.label.numberOfLines,
+        color: input.label.color,
+        fontSize: input.label.fontSize,
         fontFamily: font.family,
-        textAlign: input.textAlign,
-        marginBottom: spacing.smallest,
+        textAlign: input.label.textAlign,
+        marginBottom: spacing.smallest
     },
-    labelDisabled: TextBox.labelDisabled,
+    labelDisabled: {
+        color: input.labelDisabled.color
+    },
     input: {
-        color: input.color,
-        borderColor: input.borderColor,
-        backgroundColor: input.backgroundColor,
-        selectionColor: input.selectionColor,
-        placeholderTextColor: input.placeholderTextColor,
-        fontSize: input.fontSize,
-        fontFamily: input.fontFamily,
-        borderRadius: input.borderRadius,
-        borderWidth: input.borderWidth,
-        paddingHorizontal: input.paddingHorizontal,
-        paddingVertical: input.paddingVertical,
+        color: input.input.color,
+        borderColor: input.input.borderColor,
+        backgroundColor: input.input.backgroundColor,
+        selectionColor: input.input.selectionColor,
+        placeholderTextColor: input.input.placeholderTextColor,
+        fontSize: input.input.fontSize,
+        fontFamily: font.family,
+        borderWidth: input.input.borderWidth,
+        borderRadius: input.input.borderRadius,
+        // textAlignVertical: "center",
+        minWidth: input.input.minWidth,
+        minHeight: input.input.minHeight,
+        paddingHorizontal: input.input.paddingHorizontal,
+        paddingVertical: input.input.paddingVertical
     },
-    inputFocused: TextBox.inputFocused,
     inputDisabled: TextBox.inputDisabled,
+    inputFocused: TextBox.inputFocused,
     inputError: TextBox.inputError,
-    validationMessage: TextBox.validationMessage,
+    validationMessage: TextBox.validationMessage
 };

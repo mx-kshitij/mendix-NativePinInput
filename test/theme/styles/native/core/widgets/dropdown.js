@@ -1,4 +1,5 @@
-import { border, contrast, font, input } from "../variables";
+var _a, _b, _c;
+import { font, input } from "../variables";
 import { TextBox, TextBoxVertical } from "./textbox";
 /*
 
@@ -15,7 +16,7 @@ To customize any core styling, copy the part you want to customize to styles/nat
 export const DropDown = {
     container: {
         // All ViewStyle properties are allowed
-        ...TextBox.container,
+        ...TextBox.container
     },
     containerDisabled: {
         // All ViewStyle properties are allowed
@@ -23,7 +24,7 @@ export const DropDown = {
     },
     label: {
         // numberOfLines and all TextStyle properties are allowed
-        ...TextBox.label,
+        ...TextBox.label
     },
     labelDisabled: {
         // All TextStyle properties are allowed
@@ -31,81 +32,96 @@ export const DropDown = {
     },
     value: {
         // All TextStyle properties & placeholderTextColor are allowed
-        color: input.color,
-        fontSize: input.fontSize,
-        fontFamily: input.fontFamily,
-        placeholderTextColor: input.placeholderTextColor,
-    },
-    validationMessage: {
-        // All TextStyle properties are allowed
-        ...TextBox.validationMessage,
-    },
-    /*  New dropdown styles start */
-    valueFocused: {
-    // All TextStyle properties are allowed
+        color: input.input.color,
+        placeholderTextColor: input.input.placeholderTextColor,
+        fontSize: input.input.fontSize,
+        lineHeight: input.input.lineHeight,
+        fontFamily: font.family,
+        overflow: "hidden",
+        textAlignVertical: "center"
     },
     valueDisabled: {
         // All TextStyle properties are allowed
-        ...TextBox.inputDisabled
+        color: (_a = TextBox.inputDisabled) === null || _a === void 0 ? void 0 : _a.color,
+        borderColor: (_b = TextBox.inputDisabled) === null || _b === void 0 ? void 0 : _b.borderColor,
+        backgroundColor: (_c = TextBox.inputDisabled) === null || _c === void 0 ? void 0 : _c.backgroundColor
     },
+    valueFocused: {
+    // All TextStyle properties are allowed
+    },
+    validationMessage: {
+        // All TextStyle properties are allowed
+        ...TextBox.validationMessage
+    },
+    /*  New dropdown styles start */
     valueContainer: {
-        // All ViewStyle properties & rippleColor are allowed
+        // All ViewStyle properties & rippleColor & activeOpacity & underlayColor are allowed
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        borderWidth: input.borderWidth,
-        borderRadius: input.borderRadius,
-        borderColor: input.borderColor,
-        paddingHorizontal: input.paddingHorizontal,
-        paddingVertical: input.paddingVertical,
-        backgroundColor: input.backgroundColor,
-    },
-    valueContainerFocused: {
-        // All ViewStyle properties are allowed
-        ...TextBox.inputFocused
+        rippleColor: input.valueContainer.rippleColor,
+        borderWidth: input.input.borderWidth,
+        borderRadius: input.input.borderRadius,
+        paddingHorizontal: input.input.paddingHorizontal,
+        paddingVertical: input.input.paddingVertical,
+        backgroundColor: input.input.backgroundColor,
+        borderColor: input.input.borderColor,
+        minWidth: input.input.minWidth,
+        minHeight: input.input.minHeight
     },
     valueContainerDisabled: {
     // All ViewStyle properties are allowed
     },
+    valueContainerFocused: {
+    // All ViewStyle properties are allowed
+    },
+    iconStyle: {
+        // All TextStyle properties are allowed
+        color: input.input.color
+    },
     menuWrapper: {
         // All ViewStyle properties are allowed
-        borderRadius: border.radius,
+        overflow: "hidden",
+        borderRadius: input.input.borderRadius,
         shadowColor: "#000",
         shadowOpacity: 0.2,
         shadowRadius: 10,
         elevation: 16,
-        backgroundColor: input.backgroundColor,
+        backgroundColor: input.input.backgroundColor
     },
     itemContainer: {
         // All ViewStyle properties & rippleColor & activeOpacity & underlayColor are allowed
-        maxWidth: 500,
-        paddingVertical: 6,
-        paddingHorizontal: 16,
-        backgroundColor: input.backgroundColor,
-        underlayColor: input.inputContainerUnderlayColor,
-    },
-    iconStyle: {
-        // All TextStyle properties are allowed
-        color: input.color
+        maxWidth: input.itemContainer.maxWidth,
+        paddingVertical: input.itemContainer.paddingVertical,
+        paddingHorizontal: input.itemContainer.paddingHorizontal,
+        backgroundColor: input.itemContainer.backgroundColor,
+        underlayColor: input.inputContainer.underlayColor,
+        overflow: "hidden"
     },
     item: {
-        // All TextStlye properties are allowed
-        color: input.color,
+        // All TextStyle properties are allowed
+        color: input.item.color,
+        fontSize: input.item.fontSize
     },
     selectedItem: {
-        // All TextStlye properties are allowed
-        fontWeight: font.weightBold,
+        // All TextStyle properties are allowed
+        color: input.selectedItem.color,
+        fontSize: input.selectedItem.fontSize,
+        backgroundColor: "transparent"
     },
     selectedItemContainer: {
         // All ViewStyle properties are allowed
-        backgroundColor: contrast.lowest,
+        borderWidth: input.selectedItemContainer.borderWidth,
+        borderRadius: input.selectedItemContainer.borderRadius,
+        borderColor: input.selectedItemContainer.borderColor,
+        backgroundColor: input.selectedItemContainer.backgroundColor
     },
     /*  New dropdown styles end */
     useUniformDesign: true,
     /*  Old dropdown styles start */
     pickerIOS: {
         // All ViewStyle properties are allowed
-        backgroundColor: input.backgroundColor,
+        backgroundColor: input.input.backgroundColor
     },
     pickerItemIOS: {
     // All TextStyle properties are allowed
@@ -115,27 +131,25 @@ export const DropDown = {
     },
     pickerTopIOS: {
         // All ViewStyle properties are allowed
-        backgroundColor: input.backgroundColor,
-    },
+        backgroundColor: input.input.backgroundColor
+    }
+    /*  Old dropdown styles end */
 };
 export const DropDownVertical = {
     container: TextBoxVertical.container,
-    containerDisabled: TextBoxVertical.containerDisabled,
     label: TextBoxVertical.label,
-    labelDisabled: TextBoxVertical.labelDisabled,
     value: DropDown.value,
     valueFocused: DropDown.valueFocused,
     validationMessage: TextBoxVertical.validationMessage,
     valueContainer: DropDown.valueContainer,
     valueContainerFocused: DropDown.valueContainerFocused,
-    valueContainerDisabled: DropDown.valueContainerDisabled,
+    iconStyle: DropDown.iconStyle,
     menuWrapper: DropDown.menuWrapper,
     itemContainer: DropDown.itemContainer,
     item: DropDown.item,
-    iconStyle: DropDown.iconStyle,
     useUniformDesign: DropDown.useUniformDesign,
     pickerIOS: DropDown.pickerIOS,
     pickerItemIOS: DropDown.pickerItemIOS,
     pickerBackdropIOS: DropDown.pickerBackdropIOS,
-    pickerTopIOS: DropDown.pickerTopIOS,
+    pickerTopIOS: DropDown.pickerTopIOS
 };

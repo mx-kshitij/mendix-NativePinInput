@@ -1,4 +1,5 @@
-import { brand, contrast, font, input } from "../variables";
+import { font, progressCircle } from "../variables";
+import { TextBox } from "./textbox";
 /*
 
 DISCLAIMER:
@@ -17,26 +18,24 @@ export const com_mendix_widget_native_progresscircle_ProgressCircle = {
     },
     circle: {
         // Only the size & borderWidth & borderColor properties are allowed
-        size: 80,
-        borderWidth: 0,
+        size: progressCircle.circle.size,
+        borderWidth: 0
     },
     fill: {
         // Only the width & backgroundColor & lineCapRounded properties are allowed
-        backgroundColor: brand.primary,
-        width: 5,
-        lineCapRounded: true,
+        width: progressCircle.fill.width,
+        lineCapRounded: progressCircle.fill.lineCapRounded,
+        backgroundColor: progressCircle.fill.backgroundColor
     },
     text: {
         // All TextStyle properties are allowed
-        color: contrast.regular,
-        fontSize: font.size,
-        fontWeight: font.weightSemiBold,
-        fontFamily: font.family,
+        color: progressCircle.text.color,
+        fontSize: progressCircle.text.fontSize,
+        fontWeight: progressCircle.text.fontWeight,
+        fontFamily: font.family
     },
     validationMessage: {
         // All TextStyle properties are allowed
-        color: input.errorColor,
-        fontSize: font.size,
-        fontFamily: font.family,
-    },
+        ...TextBox.validationMessage
+    }
 };

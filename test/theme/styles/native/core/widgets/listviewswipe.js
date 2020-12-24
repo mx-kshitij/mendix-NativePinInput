@@ -1,4 +1,5 @@
 import { background } from "../variables";
+import { listViewSwipe } from "../../app/custom-variables";
 /*
 
 DISCLAIMER:
@@ -17,22 +18,22 @@ export const com_mendix_widget_native_listviewswipe_ListViewSwipe = {
         flex: 1,
         alignItems: "stretch",
         justifyContent: "space-between",
-        backgroundColor: background.primary,
+        backgroundColor: background.primary
     },
     leftAction: {
         // PanelSize & All ViewStyle properties are allowed
-        panelSize: 200,
+        panelSize: listViewSwipe.leftAction.panelSize,
         flex: 1,
         flexDirection: "row",
         alignItems: "stretch",
-        backgroundColor: background.primary,
+        backgroundColor: listViewSwipe.leftAction.backgroundColor
     },
     rightAction: {
         // PanelSize & All ViewStyle properties are allowed
-        panelSize: 200,
+        panelSize: listViewSwipe.rightAction.panelSize,
         flex: 1,
         flexDirection: "row",
         alignItems: "stretch",
-        backgroundColor: background.primary,
-    },
+        backgroundColor: listViewSwipe.rightAction.backgroundColor
+    }
 };

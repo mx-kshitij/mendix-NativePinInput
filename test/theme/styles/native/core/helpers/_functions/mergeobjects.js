@@ -12,14 +12,16 @@ export default function (...sources) {
         function isObject(item) {
             return item && typeof item === "object" && !Array.isArray(item);
         }
-        if (!sources.length)
+        if (!sources.length) {
             return target;
+        }
         const source = sources.shift();
         if (isObject(target) && isObject(source)) {
-            Object.keys(source).forEach((key) => {
+            Object.keys(source).forEach(key => {
                 if (isObject(source[key])) {
-                    if (!target[key])
+                    if (!target[key]) {
                         Object.assign(target, { [key]: {} });
+                    }
                     mergeDeep(target[key], source[key]);
                 }
                 else {

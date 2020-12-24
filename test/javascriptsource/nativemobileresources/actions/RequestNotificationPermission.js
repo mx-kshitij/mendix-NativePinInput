@@ -19,18 +19,16 @@ import { NativeModules, Platform } from "react-native";
 export async function RequestNotificationPermission() {
 	// BEGIN USER CODE
     // Documentation https://rnfirebase.io/docs/v5.x.x/notifications/receiving-notifications
-    if (NativeModules && !NativeModules.RNFirebase) {
+    if (NativeModules && !NativeModules.RNFBMessagingModule) {
         return Promise.reject(new Error("Firebase module is not available in your app"));
     }
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const firebase = require("react-native-firebase");
-    return firebase
-        .messaging()
+    const messaging = require("@react-native-firebase/messaging").default;
+    return messaging()
         .requestPermission()
         .then(() => Platform.OS === "ios"
-        ? firebase
-            .messaging()
-            .ios.registerForRemoteNotifications()
+        ? messaging()
+            .registerDeviceForRemoteMessages()
             .then(() => true)
         : true)
         .catch(() => false);

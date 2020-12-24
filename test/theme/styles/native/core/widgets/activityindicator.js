@@ -18,6 +18,6 @@ export const com_mendix_widget_native_activityindicator_ActivityIndicator = {
     indicator: {
         // Color and size are allowed
         color: brand.primary,
-        size: "large",
-    },
+        size: "large"
+    }
 };

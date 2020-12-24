@@ -19,6 +19,6 @@ export const com_mendix_widget_native_qrcode_QRCode = {
         // Only size, color and backgroundColor are allowed
         size: 100,
         color: contrast.highest,
-        backgroundColor: background.primary,
-    },
+        backgroundColor: background.primary
+    }
 };

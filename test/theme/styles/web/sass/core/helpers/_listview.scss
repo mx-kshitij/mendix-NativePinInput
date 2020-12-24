@@ -38,8 +38,7 @@
 .listview-seperated.mx-listview {
     & > ul > li {
         margin-bottom: $gutter-size;
-        border-width: 1px;
-        border-style: solid;
+        border: 1px solid $grid-border-color;
         border-radius: $border-radius-default;
     }
 }
@@ -47,9 +46,9 @@
 // Remove all styling
 .listview-stylingless.mx-listview {
     & > ul > li {
-        padding: 0;
+        padding: unset;
         cursor: default;
-        border: 0;
+        border: unset;
         background-color: transparent;
 
         &:hover,
@@ -73,6 +72,8 @@
 // Hover style activated
 .listview-hover.mx-listview {
     & > ul > li {
+        cursor: pointer;
+
         &:hover,
         &:focus,
         &:active {
@@ -103,7 +104,7 @@
 }
 
 // Bootstrap columns
-.mx-listview[class*='lv-col'] {
+.mx-listview[class*="lv-col"] {
     overflow: hidden; // For if it is not in a layout, to prevent scrollbars
     & > ul {
         display: block; // normal a table
@@ -115,7 +116,7 @@
             // clearfix
             display: table;
             clear: both;
-            content: ' ';
+            content: " ";
         }
 
         & > li {

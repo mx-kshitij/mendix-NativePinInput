@@ -10,7 +10,7 @@
 
    Default Mendix Helpers
 ========================================================================== */
-$important-helpers-value: if($important-helpers, ' !important', '');
+$important-helpers-value: if($important-helpers, " !important", "");
 
 // Display properties
 .d-none {
@@ -183,7 +183,6 @@ $important-helpers-value: if($important-helpers, ' !important', '');
         display: none #{$important-helpers-value};
     }
 }
-
 
 @media (max-width: $screen-xs-max) {
     .hide-xs,

@@ -14,16 +14,16 @@ To customize any core styling, copy the part you want to customize to styles/nat
 export const com_mendix_widget_native_badge_Badge = {
     container: {
         // All ViewStyle properties are allowed
-        borderRadius: badge.borderRadius,
         backgroundColor: badge.default.backgroundColor,
+        borderRadius: badge.borderRadius,
         paddingVertical: badge.paddingVertical,
-        paddingHorizontal: badge.paddingHorizontal,
+        paddingHorizontal: badge.paddingHorizontal
     },
     caption: {
         // All TextStyle properties are allowed
         color: badge.default.color,
         fontFamily: font.family,
         fontWeight: badge.fontWeight,
-        marginTop: -1,
-    },
+        marginTop: -1
+    }
 };

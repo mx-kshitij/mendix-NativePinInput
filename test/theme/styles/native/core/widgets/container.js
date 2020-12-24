@@ -1,3 +1,4 @@
+import { container } from "../variables";
 /*
 
 DISCLAIMER:
@@ -16,11 +17,11 @@ export const Container = {
     },
     containerDisabled: {
         // All ViewStyle properties are allowed
-        opacity: 0.6
+        opacity: container.containerDisabled.opacity
     }
 };
 export const ScrollContainer = {
     container: {
     // All ViewStyle properties are allowed
-    },
+    }
 };

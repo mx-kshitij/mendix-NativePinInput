@@ -17,124 +17,116 @@ To customize any core styling, copy the part you want to customize to styles/nat
 export const btnSecondary = {
     container: {
         borderColor: button.secondary.borderColor,
-        backgroundColor: button.secondary.backgroundColor,
+        backgroundColor: button.secondary.backgroundColor
     },
     icon: {
-        color: button.secondary.color,
+        color: button.secondary.color
     },
     caption: {
-        color: button.secondary.color,
-    },
+        color: button.secondary.color
+    }
 };
 export const btnSuccess = {
     container: {
         borderColor: button.success.borderColor,
-        backgroundColor: button.success.backgroundColor,
+        backgroundColor: button.success.backgroundColor
     },
     icon: {
-        color: button.success.color,
+        color: button.success.color
     },
     caption: {
-        color: button.success.color,
-    },
+        color: button.success.color
+    }
 };
 export const btnWarning = {
     container: {
         borderColor: button.warning.borderColor,
-        backgroundColor: button.warning.backgroundColor,
+        backgroundColor: button.warning.backgroundColor
     },
     icon: {
-        color: button.warning.color,
+        color: button.warning.color
     },
     caption: {
-        color: button.warning.color,
-    },
+        color: button.warning.color
+    }
 };
 export const btnDanger = {
     container: {
         borderColor: button.danger.borderColor,
-        backgroundColor: button.danger.backgroundColor,
+        backgroundColor: button.danger.backgroundColor
     },
     icon: {
-        color: button.danger.color,
+        color: button.danger.color
     },
     caption: {
-        color: button.danger.color,
-    },
+        color: button.danger.color
+    }
 };
 export const btnPrimaryInversed = {
     container: {
         borderColor: button.primary.color,
-        backgroundColor: button.primary.color,
+        backgroundColor: button.primary.color
     },
     icon: {
-        color: button.primary.backgroundColor,
+        color: button.primary.backgroundColor
     },
     caption: {
-        color: button.primary.backgroundColor,
-    },
+        color: button.primary.backgroundColor
+    }
 };
 //
-//== Extra Classes
-//## Helper classes to change the look and feel of the widget
-//-------------------------------------------------------------------------------------------------------------------//
-export const btnSecondaryInversed = {
-    container: {
-        borderColor: button.secondary.inversedColor,
-        backgroundColor: button.secondary.backgroundColor,
-    },
-    icon: {
-        color: button.secondary.inversedColor,
-    },
-    caption: {
-        color: button.secondary.inversedColor,
-    },
-};
+// == Extra Classes
+// ## Helper classes to change the look and feel of the widget
+// -------------------------------------------------------------------------------------------------------------------//
 //
 // Button Icon Only
 export const btnIcon = {
     container: {
         borderWidth: 0,
         backgroundColor: "transparent",
+        width: font.sizeLarge,
+        height: font.sizeLarge,
+        minWidth: undefined,
+        minHeight: undefined,
         paddingVertical: 0,
-        paddingHorizontal: 0,
+        paddingHorizontal: 0
     },
     icon: {
-        color: font.color,
+        color: font.colorTitle
     },
     caption: {
-        fontSize: 0,
-    },
+        fontSize: 0
+    }
 };
 export const btnIconPrimary = merge(btnIcon, {
     icon: {
-        color: button.primary.backgroundColor,
-    },
+        color: button.primary.backgroundColor
+    }
 });
 export const btnIconSecondary = merge(btnIcon, {
     icon: {
-        color: contrast.low,
-    },
+        color: contrast.low
+    }
 });
 export const btnIconSuccess = merge(btnIcon, {
     icon: {
-        color: button.success.backgroundColor,
-    },
+        color: button.success.backgroundColor
+    }
 });
 export const btnIconWarning = merge(btnIcon, {
     icon: {
-        color: button.warning.backgroundColor,
-    },
+        color: button.warning.backgroundColor
+    }
 });
 export const btnIconDanger = merge(btnIcon, {
     icon: {
-        color: button.danger.backgroundColor,
-    },
+        color: button.danger.backgroundColor
+    }
 });
 export const btnIconWhite = merge(btnIcon, {
     icon: {
-        color: "#FFF",
-    },
+        color: "#FFF"
+    }
 });
 //
 export const btnIconGrayRounded = {
@@ -144,15 +136,15 @@ export const btnIconGrayRounded = {
         padding: 10,
         borderRadius: 20,
         borderWidth: 0,
-        backgroundColor: contrast.lowest,
+        backgroundColor: contrast.lowest
     },
     icon: {
         size: 30,
-        color: contrast.high,
+        color: contrast.high
     },
     caption: {
-        fontSize: 0,
-    },
+        fontSize: 0
+    }
 };
 //
 // Round Button Icon With Background
@@ -162,16 +154,16 @@ export const btnIconPrimaryBackground = {
         height: 40,
         borderRadius: 20,
         paddingVertical: 0,
-        paddingHorizontal: 0,
+        paddingHorizontal: 0
     },
     icon: {
         width: "100%",
         height: "100%",
         alignItems: "center",
         justifyContent: "center",
-        size: button.fontSizeIconLarge,
-        color: button.primary.color,
-    },
+        size: font.sizeLarge,
+        color: button.primary.color
+    }
 };
 //
 //
@@ -182,27 +174,41 @@ export const btnAsText = {
         borderWidth: 0,
         borderRadius: 0,
         rippleColor: contrast.lowest,
-        backgroundColor: "transparent",
-        paddingVertical: 0,
-        paddingHorizontal: 0,
+        backgroundColor: "transparent"
+        // paddingVertical: 0,
+        // paddingHorizontal: 0,
     },
     icon: {
-        color: brand.primary,
-        size: button.fontSizeIcon,
+        size: button.icon.size
     },
     caption: {
-        color: brand.primary,
         fontWeight: font.weightSemiBold,
-        fontSize: button.fontSize,
-    },
+        fontSize: button.caption.fontSize
+    }
 };
+export const btnAsTextPrimary = merge(btnAsText, {
+    icon: {
+        color: brand.primary
+    },
+    caption: {
+        color: brand.primary
+    }
+});
+export const btnAsTextSecondary = merge(btnAsText, {
+    icon: {
+        color: font.colorTitle
+    },
+    caption: {
+        color: font.colorTitle
+    }
+});
 //
 // Button sizes
 export const btnLarge = {
     icon: {
-        size: button.fontSizeIconLarge,
+        size: font.size
     },
     caption: {
-        fontSize: button.fontSizeLarge,
-    },
+        fontSize: font.size
+    }
 };

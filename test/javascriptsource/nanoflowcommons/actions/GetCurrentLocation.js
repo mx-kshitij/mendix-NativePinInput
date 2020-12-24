@@ -19,7 +19,7 @@ import { Big } from "big.js";
  * 
  * Best practices:
  * https://developers.google.com/web/fundamentals/native-hardware/user-location/
- * @param {Big} timeout - The maximum length of time (in milliseconds) the device is allowed to take in order to return a location. If empty, there is no timeout.
+ * @param {Big} timeout - The maximum length of time (in milliseconds) the device is allowed to take in order to return a location. If set as empty, default value will be 30 second timeout.
  * @param {Big} maximumAge - The maximum age (in milliseconds) of a possible cached position that is acceptable to return. If set to 0, it means that the device cannot use a cached position and must attempt to retrieve the real current position. By default the device will always return a cached position regardless of its age.
  * @param {boolean} highAccuracy - Use a higher accuracy method to determine the current location. Setting this to false saves battery life.
  * @returns {Promise.<MxObject>}
