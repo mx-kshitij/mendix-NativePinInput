@@ -6,7 +6,8 @@
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
-import { NativeModules, Platform } from "react-native";
+import { Platform, NativeModules } from 'react-native';
+import PushNotification from 'react-native-push-notification';
 
 // BEGIN EXTRA CODE
 // END EXTRA CODE
@@ -23,12 +24,10 @@ export async function CancelScheduledNotification(notificationId) {
         ((isIOS && !NativeModules.RNCPushNotificationIOS) || (!isIOS && !NativeModules.RNPushNotification))) {
         return Promise.reject(new Error("Notifications module is not available in your app"));
     }
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const RNPushNotification = require("react-native-push-notification");
     if (!notificationId) {
         return Promise.reject(new Error("Input parameter 'Notification id' is required"));
     }
-    RNPushNotification.cancelLocalNotifications({ id: notificationId });
+    PushNotification.cancelLocalNotifications({ id: notificationId });
     return Promise.resolve();
 	// END USER CODE
 }

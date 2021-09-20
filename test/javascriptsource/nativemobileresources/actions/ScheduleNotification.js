@@ -6,7 +6,8 @@
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
 import { Big } from "big.js";
-import { NativeModules, Platform } from "react-native";
+import { Platform, NativeModules } from 'react-native';
+import PushNotification from 'react-native-push-notification';
 
 // BEGIN EXTRA CODE
 // END EXTRA CODE
@@ -33,8 +34,6 @@ export async function ScheduleNotification(date, body, title, subtitle, playSoun
         ((isIOS && !NativeModules.RNCPushNotificationIOS) || (!isIOS && !NativeModules.RNPushNotification))) {
         return Promise.reject(new Error("Notifications module is not available in your app"));
     }
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const RNPushNotification = require("react-native-push-notification");
     if (!body) {
         return Promise.reject(new Error("Input parameter 'Body' is required"));
     }
@@ -42,9 +41,9 @@ export async function ScheduleNotification(date, body, title, subtitle, playSoun
     const notificationIdNumber = Number(notificationId);
     if (!isIOS) {
         const channelId = "mendix-local-notifications";
-        const channelExists = await new Promise(resolve => RNPushNotification.channelExists(channelId, (exists) => resolve(exists)));
+        const channelExists = await new Promise(resolve => PushNotification.channelExists(channelId, (exists) => resolve(exists)));
         if (!channelExists) {
-            const channel = await new Promise(resolve => RNPushNotification.createChannel({
+            const channel = await new Promise(resolve => PushNotification.createChannel({
                 channelId,
                 channelName: "Local notifications"
             }, created => resolve(created)));
@@ -73,7 +72,7 @@ export async function ScheduleNotification(date, body, title, subtitle, playSoun
     if (date && date.getTime()) {
         notification.date = date;
     }
-    RNPushNotification.localNotificationSchedule(notification);
+    PushNotification.localNotificationSchedule(notification);
     return Promise.resolve();
 	// END USER CODE
 }
