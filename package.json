@@ -22,7 +22,7 @@
     "url": "https://github.com/itvisors/mendix-nativepininput/issues"
   },
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^8.18.3",
+    "@mendix/pluggable-widgets-tools": "^9.5.4",
     "@types/big.js": "^6.0.2",
     "@types/react": "~17.0.1",
     "@types/react-native": "~0.63.52"

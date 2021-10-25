@@ -26,7 +26,7 @@ export interface NativePinInputPreviewProps {
     style: string;
     dataAttr: string;
     maxLength: number | null;
-    deleteButtonIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; } | null;
+    deleteButtonIcon: { type: "glyph"; iconClass: string } | { type: "image"; imageUrl: string } | null;
     darkMode: DarkModeEnum;
     buttonStyle: ButtonStyleEnum;
     onChangeAction: {} | null;
