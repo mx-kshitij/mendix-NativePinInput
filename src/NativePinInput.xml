@@ -5,6 +5,7 @@
         xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Native Pin Input</name>
     <description>Native pin input</description>
+    <studioProCategory>Input elements</studioProCategory>
     <icon>iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAIAAAC1nk4lAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnMAABJzAYwiuQcAAAIvSURBVGhD7dXPSxtBFAfwVbRS9CRU0ZuIoiBJE6m23RpFESskBdtDQ6DQWlAQFII9lHj3FujNm1f/ACGIehASBUWRKkJLoaa/YsUaY2IiScym09mx5BAybN5kUHifS2Yej/hlDfsty2azym1Tzj5vFQwtC4aWRUzodCodv0iwC3V1lbmIJXJfTZqmkUkmk2F3CPK9QNub+11tL8xNDo/bq0+CX3/1Wl1k8ur5u1QyRSaRs6ijf5xM7H1j4dNzfa1oAp70ztZBMpkih2VfQJ+srW5GzmLksLf7ORyOkgPZ+X4YIocf3462Nj7+WwIQEHpwWG3vaK6uuet+/0afjLwcfPjkflXVHddrR119LZnY+h8MP7NVVFYM2XsGnj7W14qGjShLMU86Eb9cWvSf/ok86rF0mFvYNAd8oTDDoX+HTkadntDPY/064XaNTTr1sw6+wGX45+Gdnf//94i5DwtfPgXZhYIvcBkOHVjbYSeK/KM2/LvsQsEXuAyHzmoaO10jVcdOFHyBy3Bota+Tna6pNis7UfAFLsOhp2feNjTeYxdFGZ9ytrY3sQsFX+Aq5pUXi8ZXfOvkhdWtmkyWNjbNAV8oDBtRFmxEChsxP8OhsREZbMR8sBGxEW84bEQKGzE/w6GxERlsxHywEbERb7iSPGlg4XGJDw0vPC7xPw944XGJDw0vPC7xoeGFxyU+NLzwuMSHhhceV0leecDC48JGlAVDy4KhZcHQsmBoORTlLyS6LMs1MktlAAAAAElFTkSuQmCC</icon>
     <properties>
         <propertyGroup caption="General">
