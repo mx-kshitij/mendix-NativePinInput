@@ -3,6 +3,7 @@
  * WARNING: All changes made to this file will be overwritten
  * @author Mendix UI Content Team
  */
+import { CSSProperties } from "react";
 import { ActionValue, DynamicValue, EditableValue, NativeIcon } from "mendix";
 
 export type DarkModeEnum = "device" | "dark" | "light";
@@ -22,11 +23,13 @@ export interface NativePinInputProps<Style> {
 }
 
 export interface NativePinInputPreviewProps {
-    class: string;
+    className: string;
     style: string;
+    styleObject?: CSSProperties;
+    readOnly: boolean;
     dataAttr: string;
     maxLength: number | null;
-    deleteButtonIcon: { type: "glyph"; iconClass: string } | { type: "image"; imageUrl: string } | null;
+    deleteButtonIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; } | null;
     darkMode: DarkModeEnum;
     buttonStyle: ButtonStyleEnum;
     onChangeAction: {} | null;
