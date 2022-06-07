@@ -1,9 +1,8 @@
-import { Component, ReactNode, createElement } from "react";
+import { ReactElement, createElement, useMemo } from "react";
 import { Pressable, View } from "react-native";
 import { DynamicValue, NativeIcon, ValueStatus } from "mendix";
 import { Icon } from "mendix/components/native/Icon";
-
-import { CustomStyle } from "../NativePinInput";
+import { CustomStyle } from "src/ui/styles";
 
 export interface DeleteButtonProps {
     deleteButtonIcon: DynamicValue<NativeIcon>;
@@ -11,35 +10,20 @@ export interface DeleteButtonProps {
     onClick: () => void;
 }
 
-export class DeleteButton extends Component<DeleteButtonProps> {
-    private defaultIconGlyph = "glyphicon-trash";
-
-    render(): ReactNode {
-        return (
-            <Pressable onPress={() => this.onClick()}>
-                {this.renderIcon(this.defaultIconGlyph, this.props.deleteButtonIcon)}
-            </Pressable>
-        );
-    }
-
-    onClick(): void {
-        this.props.onClick();
-    }
-
-    private renderIcon = (glyph: string, toBeRenderedIcon?: DynamicValue<NativeIcon>): ReactNode => {
+export function DeleteButton({ deleteButtonIcon, style, onClick }: DeleteButtonProps): ReactElement {
+    const renderIcon = useMemo((): ReactElement => {
+        const defaultIconGlyph = "glyphicon-trash";
         const nativeIcon: NativeIcon =
-            toBeRenderedIcon && toBeRenderedIcon.status === ValueStatus.Available
-                ? toBeRenderedIcon.value
-                : { type: "glyph", iconClass: glyph };
-        // Do not apply styling to touchable, but to the child view
+            deleteButtonIcon && deleteButtonIcon.status === ValueStatus.Available
+                ? deleteButtonIcon.value
+                : { type: "glyph", iconClass: defaultIconGlyph };
+        // Do not apply styling to pressable, but to the child view
         return (
-            <View style={this.props.style.deleteButtonTouchable}>
-                <Icon
-                    color={this.props.style.icon.color as string}
-                    icon={nativeIcon}
-                    size={this.props.style.icon.fontSize}
-                />
+            <View style={style.deleteButtonTouchable}>
+                <Icon color={style.icon.color as string} icon={nativeIcon} size={style.icon.fontSize} />
             </View>
         );
-    };
+    }, [deleteButtonIcon, style]);
+
+    return <Pressable onPress={() => onClick()}>{renderIcon}</Pressable>;
 }

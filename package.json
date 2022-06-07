@@ -1,10 +1,14 @@
 {
   "name": "nativepininput",
   "widgetName": "NativePinInput",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Native pin input",
   "copyright": "ITvisors 2019",
   "author": "Marcel Groeneweg",
+  "engines": {
+    "node": ">=12"
+  },
+  "license": "Apache-2.0",
   "config": {
     "projectPath": "./test/"
   },
@@ -17,12 +21,8 @@
     "prerelease": "npm run lint",
     "release": "pluggable-widgets-tools release:native"
   },
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/itvisors/mendix-nativepininput/issues"
-  },
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^9.10.0",
+    "@mendix/pluggable-widgets-tools": "^9.13.1",
     "@types/big.js": "^6.0.2",
     "@types/react": "~17.0.1",
     "@types/react-native": "~0.63.52"

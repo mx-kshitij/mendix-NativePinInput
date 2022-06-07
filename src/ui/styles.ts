@@ -1,4 +1,18 @@
-import { StyleSheet } from "react-native";
+import { Style } from "@mendix/pluggable-widgets-tools";
+import { StyleSheet, TextStyle, ViewStyle } from "react-native";
+
+export interface CustomStyle extends Style {
+    container: ViewStyle;
+    readonlyText: TextStyle;
+    buttonRow: ViewStyle;
+    valueRow: ViewStyle;
+    pinInputView: ViewStyle;
+    deleteButtonTouchable: ViewStyle;
+    emptyContainer: ViewStyle;
+    icon: TextStyle;
+    caption: TextStyle;
+    validationMessage: TextStyle;
+}
 
 export const commonStyles = StyleSheet.create({
     container: {
@@ -42,6 +56,19 @@ export const commonStyles = StyleSheet.create({
         fontSize: 25
     }
 });
+
+export const defaultStyle: CustomStyle = {
+    container: commonStyles.container,
+    readonlyText: commonStyles.readonlyText,
+    buttonRow: commonStyles.buttonRow,
+    valueRow: commonStyles.valueRow,
+    pinInputView: commonStyles.pinInputView,
+    deleteButtonTouchable: commonStyles.deleteButtonTouchable,
+    icon: commonStyles.icon,
+    emptyContainer: commonStyles.emptyContainer,
+    caption: commonStyles.caption,
+    validationMessage: commonStyles.validationMessage
+};
 
 export const darkStyles = StyleSheet.create({
     container: {},

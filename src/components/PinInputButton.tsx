@@ -1,7 +1,7 @@
-import { Component, ReactNode, createElement } from "react";
+import { ReactElement, createElement, useCallback, useMemo } from "react";
 import { Pressable, Text, View } from "react-native";
 
-import { CustomStyle } from "../NativePinInput";
+import { CustomStyle } from "src/ui/styles";
 
 export interface PinInputButtonProps {
     caption: string;
@@ -9,18 +9,18 @@ export interface PinInputButtonProps {
     onClick: (value: string) => void;
 }
 
-export class PinInputButton extends Component<PinInputButtonProps> {
-    render(): ReactNode {
-        return (
-            <Pressable onPress={() => this.onClick()}>
-                <View style={this.props.style.pinInputView}>
-                    <Text style={this.props.style.caption}>{this.props.caption}</Text>
-                </View>
-            </Pressable>
-        );
-    }
+export function PinInputButton({ caption, style, onClick }: PinInputButtonProps): ReactElement {
+    const onClickHandler = useCallback((): void => {
+        onClick(caption);
+    }, [caption, onClick]);
 
-    onClick(): void {
-        this.props.onClick(this.props.caption);
-    }
+    const renderView = useMemo((): ReactElement => {
+        return (
+            <View style={style.pinInputView}>
+                <Text style={style.caption}>{caption}</Text>
+            </View>
+        );
+    }, [caption, style]);
+
+    return <Pressable onPress={() => onClickHandler()}>{renderView}</Pressable>;
 }

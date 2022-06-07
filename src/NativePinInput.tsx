@@ -1,184 +1,77 @@
-import { Component, ReactNode, createElement } from "react";
-import { NativeModules, Text, TextStyle, ViewStyle, View, TextInput } from "react-native";
+import { createElement, ReactElement, useEffect, useMemo, useState } from "react";
+import { Appearance, Text, View, TextInput } from "react-native";
 import { NativePinInputProps } from "../typings/NativePinInputProps";
-import { Style, flattenStyles } from "./utils/common";
-import { commonStyles, circleStyles, numKeyboardStyles, darkStyles, lightStyles } from "./ui/styles";
+import { circleStyles, numKeyboardStyles, darkStyles, lightStyles, CustomStyle, defaultStyle } from "./ui/styles";
+import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 import { PinInputButton } from "./components/PinInputButton";
 import { ValueStatus } from "mendix";
 import { DeleteButton } from "./components/DeleteButton";
 
-export interface CustomStyle extends Style {
-    container: ViewStyle;
-    readonlyText: TextStyle;
-    buttonRow: ViewStyle;
-    valueRow: ViewStyle;
-    pinInputView: ViewStyle;
-    deleteButtonTouchable: ViewStyle;
-    emptyContainer: ViewStyle;
-    icon: TextStyle;
-    caption: TextStyle;
-    validationMessage: TextStyle;
-}
+export function NativePinInput({
+    style,
+    dataAttr,
+    maxLength,
+    deleteButtonIcon,
+    darkMode,
+    buttonStyle,
+    onChangeAction,
+    onInputCompleteAction
+}: NativePinInputProps<CustomStyle>): ReactElement {
+    const deviceDarkMode = Appearance.getColorScheme() === "dark";
 
-const defaultStyle: CustomStyle = {
-    container: commonStyles.container,
-    readonlyText: commonStyles.readonlyText,
-    buttonRow: commonStyles.buttonRow,
-    valueRow: commonStyles.valueRow,
-    pinInputView: commonStyles.pinInputView,
-    deleteButtonTouchable: commonStyles.deleteButtonTouchable,
-    icon: commonStyles.icon,
-    emptyContainer: commonStyles.emptyContainer,
-    caption: commonStyles.caption,
-    validationMessage: commonStyles.validationMessage
-};
+    const [textValue, setTextValue] = useState<string>("");
+    const [displayValue, setDisplayValue] = useState<string>("");
 
-interface State {
-    textValue: string;
-    displayValue: string;
-}
+    // Insert additional styles based on properties.
+    // These must be placed at the top of the array, using unshift, to allow overrule by project theme styles and design properties.
+    const styleArray: CustomStyle[] = [...style];
+    switch (darkMode) {
+        case "dark":
+            styleArray.unshift(darkStyles);
+            break;
 
-// Mendix 9 is different!
-// Safely check if Appearance API is available in this version of React Native
-const Appearance = require("react-native").Appearance;
-const deviceDarkMode =
-    NativeModules && NativeModules.RNDarkMode && NativeModules.RNDarkMode.initialMode
-        ? NativeModules.RNDarkMode.initialMode === "dark"
-        : Appearance
-        ? Appearance.getColorScheme() === "dark"
-        : false;
+        case "light":
+            styleArray.unshift(lightStyles);
+            break;
 
-export class NativePinInput extends Component<NativePinInputProps<CustomStyle>, State> {
-    private readonly mergedStyle: CustomStyle;
-
-    state = {
-        textValue: "",
-        displayValue: ""
-    };
-
-    constructor(props: NativePinInputProps<CustomStyle>) {
-        super(props);
-
-        // Insert additional styles based on properties.
-        // These must be placed at the top of the array, using unshift, to allow overrule by project theme styles and design properties.
-        const styleArray: CustomStyle[] = [...this.props.style];
-        switch (this.props.darkMode) {
-            case "dark":
+        default:
+            if (deviceDarkMode) {
                 styleArray.unshift(darkStyles);
-                break;
-
-            case "light":
+            } else {
                 styleArray.unshift(lightStyles);
-                break;
-
-            default:
-                if (deviceDarkMode) {
-                    styleArray.unshift(darkStyles);
-                } else {
-                    styleArray.unshift(lightStyles);
-                }
-        }
-        if (this.props.buttonStyle === "circle") {
-            styleArray.unshift(circleStyles);
-        } else {
-            styleArray.unshift(numKeyboardStyles);
-        }
-        this.mergedStyle = flattenStyles(defaultStyle, styleArray);
-
-        this.onClick = this.onClick.bind(this);
-        this.onDeleteClick = this.onDeleteClick.bind(this);
-    }
-
-    componentDidUpdate(prevProps: NativePinInputProps<CustomStyle>): void {
-        const { dataAttr: prevDataAttr } = prevProps;
-        const { dataAttr } = this.props;
-
-        if (
-            prevDataAttr &&
-            prevDataAttr.status === ValueStatus.Available &&
-            dataAttr &&
-            dataAttr.status === ValueStatus.Available
-        ) {
-            if (prevDataAttr.value && !dataAttr.value) {
-                // Clear state if we receive empty value
-                this.setState({
-                    displayValue: "",
-                    textValue: ""
-                });
             }
+    }
+    if (buttonStyle === "circle") {
+        styleArray.unshift(circleStyles);
+    } else {
+        styleArray.unshift(numKeyboardStyles);
+    }
+    const mergedStyle: CustomStyle = mergeNativeStyles(defaultStyle, styleArray);
+
+    useEffect(() => {
+        if (textValue && dataAttr && !dataAttr.value) {
+            setTextValue("");
+            setDisplayValue("");
         }
-    }
+    }, [dataAttr, textValue]);
 
-    render(): ReactNode {
-        return (
-            <View style={this.mergedStyle.container}>
-                <View style={this.mergedStyle.valueRow}>
-                    <TextInput
-                        editable={false}
-                        style={this.mergedStyle.readonlyText}
-                        value={this.state.displayValue}
-                        secureTextEntry
-                    />
-                    {this.renderValidation()}
-                </View>
-                <View style={this.mergedStyle.buttonRow}>
-                    <PinInputButton caption="1" style={this.mergedStyle} onClick={this.onClick} />
-                    <PinInputButton caption="2" style={this.mergedStyle} onClick={this.onClick} />
-                    <PinInputButton caption="3" style={this.mergedStyle} onClick={this.onClick} />
-                </View>
-                <View style={this.mergedStyle.buttonRow}>
-                    <PinInputButton caption="4" style={this.mergedStyle} onClick={this.onClick} />
-                    <PinInputButton caption="5" style={this.mergedStyle} onClick={this.onClick} />
-                    <PinInputButton caption="6" style={this.mergedStyle} onClick={this.onClick} />
-                </View>
-                <View style={this.mergedStyle.buttonRow}>
-                    <PinInputButton caption="7" style={this.mergedStyle} onClick={this.onClick} />
-                    <PinInputButton caption="8" style={this.mergedStyle} onClick={this.onClick} />
-                    <PinInputButton caption="9" style={this.mergedStyle} onClick={this.onClick} />
-                </View>
-                <View style={this.mergedStyle.buttonRow}>
-                    <View style={this.mergedStyle.emptyContainer}></View>
-                    <PinInputButton caption="0" style={this.mergedStyle} onClick={this.onClick} />
-                    <DeleteButton
-                        deleteButtonIcon={this.props.deleteButtonIcon}
-                        style={this.mergedStyle}
-                        onClick={this.onDeleteClick}
-                    />
-                </View>
-            </View>
-        );
-    }
-
-    renderValidation(): ReactNode {
-        let validation;
-        if (this.props.dataAttr.validation) {
-            validation = "" + this.props.dataAttr.validation;
-        } else {
-            validation = " ";
-        }
-        return <Text style={this.mergedStyle.validationMessage}>{validation}</Text>;
-    }
-
-    onClick(value: string): void {
-        const { dataAttr, onChangeAction, onInputCompleteAction } = this.props;
-
+    const onClick = (value: string): void => {
         if (!dataAttr || dataAttr.status !== ValueStatus.Available) {
             return;
         }
         // Add input if not at maximum length yet
-        let displayValueLength = this.state.textValue.length;
-        if (displayValueLength < this.props.maxLength) {
+        let displayValueLength = displayValue ? displayValue.length : 0;
+        if (displayValueLength < maxLength) {
             // Add digit to value
-            dataAttr.setTextValue(this.state.textValue + value);
-            this.setState(state => ({
-                displayValue: state.displayValue + "*",
-                textValue: state.textValue + value
-            }));
+            const newTextValue = textValue + value;
+            dataAttr.setTextValue(newTextValue);
+            setTextValue(newTextValue);
+            setDisplayValue(displayValue + "*");
             displayValueLength++;
 
             // Execute on change action if more input expected,
             // execute on input complete action if all digits were entered.
-            if (displayValueLength < this.props.maxLength) {
+            if (displayValueLength < maxLength) {
                 if (onChangeAction && onChangeAction.canExecute && !onChangeAction.isExecuting) {
                     onChangeAction.execute();
                 }
@@ -188,28 +81,60 @@ export class NativePinInput extends Component<NativePinInputProps<CustomStyle>, 
                 }
             }
         }
-    }
+    };
 
-    onDeleteClick(): void {
-        const { dataAttr, onChangeAction } = this.props;
-
+    const onDeleteClick = (): void => {
         if (!dataAttr || dataAttr.status !== ValueStatus.Available) {
             return;
         }
-        if (this.state.textValue.length > 0) {
-            this.setState(state => {
-                const newValue = state.textValue.substr(0, state.textValue.length - 1);
-                const newDisplayValue = state.displayValue.substr(0, state.displayValue.length - 1);
-                dataAttr.setTextValue(newValue);
-
-                return {
-                    displayValue: newDisplayValue,
-                    textValue: newValue
-                };
-            });
+        if (textValue && displayValue && textValue.length > 0) {
+            const newValue = textValue.substring(0, textValue.length - 1);
+            const newDisplayValue = displayValue.substring(0, displayValue.length - 1);
+            dataAttr.setTextValue(newValue);
+            setTextValue(newValue);
+            setDisplayValue(newDisplayValue);
             if (onChangeAction && onChangeAction.canExecute && !onChangeAction.isExecuting) {
                 onChangeAction.execute();
             }
         }
-    }
+    };
+
+    const renderValidation = useMemo((): ReactElement => {
+        let validation;
+        if (dataAttr.validation) {
+            validation = "" + dataAttr.validation;
+        } else {
+            validation = " ";
+        }
+        return <Text style={mergedStyle.validationMessage}>{validation}</Text>;
+    }, [mergedStyle, dataAttr.validation]);
+
+    return (
+        <View style={mergedStyle.container}>
+            <View style={mergedStyle.valueRow}>
+                <TextInput editable={false} style={mergedStyle.readonlyText} value={displayValue} secureTextEntry />
+                {renderValidation}
+            </View>
+            <View style={mergedStyle.buttonRow}>
+                <PinInputButton caption="1" style={mergedStyle} onClick={onClick} />
+                <PinInputButton caption="2" style={mergedStyle} onClick={onClick} />
+                <PinInputButton caption="3" style={mergedStyle} onClick={onClick} />
+            </View>
+            <View style={mergedStyle.buttonRow}>
+                <PinInputButton caption="4" style={mergedStyle} onClick={onClick} />
+                <PinInputButton caption="5" style={mergedStyle} onClick={onClick} />
+                <PinInputButton caption="6" style={mergedStyle} onClick={onClick} />
+            </View>
+            <View style={mergedStyle.buttonRow}>
+                <PinInputButton caption="7" style={mergedStyle} onClick={onClick} />
+                <PinInputButton caption="8" style={mergedStyle} onClick={onClick} />
+                <PinInputButton caption="9" style={mergedStyle} onClick={onClick} />
+            </View>
+            <View style={mergedStyle.buttonRow}>
+                <View style={mergedStyle.emptyContainer}></View>
+                <PinInputButton caption="0" style={mergedStyle} onClick={onClick} />
+                <DeleteButton deleteButtonIcon={deleteButtonIcon} style={mergedStyle} onClick={onDeleteClick} />
+            </View>
+        </View>
+    );
 }
