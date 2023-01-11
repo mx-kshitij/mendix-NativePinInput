@@ -8,6 +8,7 @@ import { ValueStatus } from "mendix";
 import { DeleteButton } from "./components/DeleteButton";
 
 export function NativePinInput({
+    name,
     style,
     dataAttr,
     maxLength,
@@ -110,30 +111,30 @@ export function NativePinInput({
     }, [mergedStyle, dataAttr.validation]);
 
     return (
-        <View style={mergedStyle.container}>
+        <View nativeID={name} testID={name} style={mergedStyle.container}>
             <View style={mergedStyle.valueRow}>
                 <TextInput editable={false} style={mergedStyle.readonlyText} value={displayValue} secureTextEntry />
                 {renderValidation}
             </View>
             <View style={mergedStyle.buttonRow}>
-                <PinInputButton caption="1" style={mergedStyle} onClick={onClick} />
-                <PinInputButton caption="2" style={mergedStyle} onClick={onClick} />
-                <PinInputButton caption="3" style={mergedStyle} onClick={onClick} />
+                <PinInputButton nativeId={name} caption="1" style={mergedStyle} onClick={onClick} />
+                <PinInputButton nativeId={name} caption="2" style={mergedStyle} onClick={onClick} />
+                <PinInputButton nativeId={name} caption="3" style={mergedStyle} onClick={onClick} />
             </View>
             <View style={mergedStyle.buttonRow}>
-                <PinInputButton caption="4" style={mergedStyle} onClick={onClick} />
-                <PinInputButton caption="5" style={mergedStyle} onClick={onClick} />
-                <PinInputButton caption="6" style={mergedStyle} onClick={onClick} />
+                <PinInputButton nativeId={name} caption="4" style={mergedStyle} onClick={onClick} />
+                <PinInputButton nativeId={name} caption="5" style={mergedStyle} onClick={onClick} />
+                <PinInputButton nativeId={name} caption="6" style={mergedStyle} onClick={onClick} />
             </View>
             <View style={mergedStyle.buttonRow}>
-                <PinInputButton caption="7" style={mergedStyle} onClick={onClick} />
-                <PinInputButton caption="8" style={mergedStyle} onClick={onClick} />
-                <PinInputButton caption="9" style={mergedStyle} onClick={onClick} />
+                <PinInputButton nativeId={name} caption="7" style={mergedStyle} onClick={onClick} />
+                <PinInputButton nativeId={name} caption="8" style={mergedStyle} onClick={onClick} />
+                <PinInputButton nativeId={name} caption="9" style={mergedStyle} onClick={onClick} />
             </View>
             <View style={mergedStyle.buttonRow}>
                 <View style={mergedStyle.emptyContainer}></View>
-                <PinInputButton caption="0" style={mergedStyle} onClick={onClick} />
-                <DeleteButton deleteButtonIcon={deleteButtonIcon} style={mergedStyle} onClick={onDeleteClick} />
+                <PinInputButton nativeId={name} caption="0" style={mergedStyle} onClick={onClick} />
+                <DeleteButton nativeId={name} deleteButtonIcon={deleteButtonIcon} style={mergedStyle} onClick={onDeleteClick}/>
             </View>
         </View>
     );

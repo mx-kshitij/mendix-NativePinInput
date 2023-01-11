@@ -5,12 +5,13 @@ import { Icon } from "mendix/components/native/Icon";
 import { CustomStyle } from "src/ui/styles";
 
 export interface DeleteButtonProps {
+    nativeId: string;
     deleteButtonIcon: DynamicValue<NativeIcon>;
     style: CustomStyle;
     onClick: () => void;
 }
 
-export function DeleteButton({ deleteButtonIcon, style, onClick }: DeleteButtonProps): ReactElement {
+export function DeleteButton({ nativeId, deleteButtonIcon, style, onClick }: DeleteButtonProps): ReactElement {
     const renderIcon = useMemo((): ReactElement => {
         const defaultIconGlyph = "glyphicon-trash";
         const nativeIcon: NativeIcon =
@@ -19,11 +20,11 @@ export function DeleteButton({ deleteButtonIcon, style, onClick }: DeleteButtonP
                 : { type: "glyph", iconClass: defaultIconGlyph };
         // Do not apply styling to pressable, but to the child view
         return (
-            <View style={style.deleteButtonTouchable}>
+            <View style={style.deleteButtonTouchable}accessible={true} accessibilityLabel={"Delete"} accessibilityRole={"button"}>
                 <Icon color={style.icon.color as string} icon={nativeIcon} size={style.icon.fontSize} />
             </View>
         );
     }, [deleteButtonIcon, style]);
 
-    return <Pressable onPress={() => onClick()}>{renderIcon}</Pressable>;
+    return <Pressable testID={nativeId+'_delete'} nativeID={nativeId+'_delete'} onPress={() => onClick()}>{renderIcon}</Pressable>;
 }
