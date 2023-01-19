@@ -20,6 +20,7 @@ export interface NativePinInputProps<Style> {
     buttonStyle: ButtonStyleEnum;
     onChangeAction?: ActionValue;
     onInputCompleteAction?: ActionValue;
+    accCaptionBtnDelete: DynamicValue<string>;
 }
 
 export interface NativePinInputPreviewProps {
@@ -34,4 +35,5 @@ export interface NativePinInputPreviewProps {
     buttonStyle: ButtonStyleEnum;
     onChangeAction: {} | null;
     onInputCompleteAction: {} | null;
+    accCaptionBtnDelete: string;
 }

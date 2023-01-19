@@ -17,7 +17,7 @@ export function PinInputButton({ nativeId, caption, style, onClick }: PinInputBu
 
     const renderView = useMemo((): ReactElement => {
         return (
-            <View style={style.pinInputView} accessible={true} accessibilityLabel={caption} accessibilityRole={"button"}>
+            <View style={style.pinInputView}>
                 <Text style={style.caption}>{caption}</Text>
             </View>
         );

@@ -8,10 +8,11 @@ export interface DeleteButtonProps {
     nativeId: string;
     deleteButtonIcon: DynamicValue<NativeIcon>;
     style: CustomStyle;
+    accessibilityCaption?: string;
     onClick: () => void;
 }
 
-export function DeleteButton({ nativeId, deleteButtonIcon, style, onClick }: DeleteButtonProps): ReactElement {
+export function DeleteButton({ nativeId, deleteButtonIcon, style, accessibilityCaption, onClick }: DeleteButtonProps): ReactElement {
     const renderIcon = useMemo((): ReactElement => {
         const defaultIconGlyph = "glyphicon-trash";
         const nativeIcon: NativeIcon =
@@ -20,7 +21,7 @@ export function DeleteButton({ nativeId, deleteButtonIcon, style, onClick }: Del
                 : { type: "glyph", iconClass: defaultIconGlyph };
         // Do not apply styling to pressable, but to the child view
         return (
-            <View style={style.deleteButtonTouchable}accessible={true} accessibilityLabel={"Delete"} accessibilityRole={"button"}>
+            <View style={style.deleteButtonTouchable} accessible={true} accessibilityLabel={accessibilityCaption} /* accessibilityHint={"hint"} accessibilityRole={"button"}*/>
                 <Icon color={style.icon.color as string} icon={nativeIcon} size={style.icon.fontSize} />
             </View>
         );

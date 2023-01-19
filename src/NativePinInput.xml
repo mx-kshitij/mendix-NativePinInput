@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<widget id="itvisors.nativepininput.NativePinInput" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
-        supportedPlatform="Native"
-        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+<widget
+    id="itvisors.nativepininput.NativePinInput"
+    pluginWidget="true"
+    needsEntityContext="true"
+    offlineCapable="true"
+    supportedPlatform="Native"
+    xmlns="http://www.mendix.com/widget/1.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd"
+>
     <name>Pin Input</name>
     <description>Native pin input</description>
     <studioProCategory>Input elements</studioProCategory>
@@ -12,23 +18,24 @@
                 <caption>Attribute</caption>
                 <description>Data attribute</description>
                 <attributeTypes>
-                    <attributeType name="String"/>
+                    <attributeType name="String" />
                 </attributeTypes>
             </property>
             <property key="maxLength" type="integer" defaultValue="4">
                 <caption>Maximum input length</caption>
-                <description></description>
+                <description />
             </property>
-            <systemProperty key="Visibility"/>
+            <systemProperty key="Visibility" />
             <property key="deleteButtonIcon" type="icon">
                 <caption>Delete button icon</caption>
-                <description></description>
+                <description />
             </property>
         </propertyGroup>
         <propertyGroup caption="Styling">
             <property key="darkMode" type="enumeration" defaultValue="device">
                 <caption>Dark mode</caption>
-                <description>Choose whether the widget will follow the device dark mode setting or a fixed setting.</description>
+                <description
+                >Choose whether the widget will follow the device dark mode setting or a fixed setting.</description>
                 <enumerationValues>
                     <enumerationValue key="device">Device</enumerationValue>
                     <enumerationValue key="dark">Dark</enumerationValue>
@@ -47,11 +54,24 @@
         <propertyGroup caption="Events">
             <property key="onChangeAction" type="action" required="false">
                 <caption>On change action</caption>
-                <description>Action to trigger when value changes, called for every addition or deletion of a digit</description>
+                <description
+                >Action to trigger when value changes, called for every addition or deletion of a digit</description>
             </property>
             <property key="onInputCompleteAction" type="action" required="false">
                 <caption>Input complete action</caption>
                 <description>Action to trigger when user has entered the required number of digits</description>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Accessibility">
+            <property key="accCaptionBtnDelete" type="textTemplate">
+                <caption>Caption for delete</caption>
+                <description />
+                <translations>
+                    <translation lang="en_US">delete</translation>
+                    <translation lang="nl_BE">verwijderen</translation>
+                    <translation lang="fr_BE">effacer</translation>
+                    <translation lang="de_DE">löschen</translation>
+                </translations>
             </property>
         </propertyGroup>
     </properties>

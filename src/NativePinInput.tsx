@@ -16,7 +16,8 @@ export function NativePinInput({
     darkMode,
     buttonStyle,
     onChangeAction,
-    onInputCompleteAction
+    onInputCompleteAction,
+    accCaptionBtnDelete
 }: NativePinInputProps<CustomStyle>): ReactElement {
     const deviceDarkMode = Appearance.getColorScheme() === "dark";
 
@@ -134,7 +135,7 @@ export function NativePinInput({
             <View style={mergedStyle.buttonRow}>
                 <View style={mergedStyle.emptyContainer}></View>
                 <PinInputButton nativeId={name} caption="0" style={mergedStyle} onClick={onClick} />
-                <DeleteButton nativeId={name} deleteButtonIcon={deleteButtonIcon} style={mergedStyle} onClick={onDeleteClick}/>
+                <DeleteButton nativeId={name} deleteButtonIcon={deleteButtonIcon} style={mergedStyle} accessibilityCaption={accCaptionBtnDelete.value} onClick={onDeleteClick} />
             </View>
         </View>
     );
